@@ -9,3 +9,10 @@
   object-fit:cover;
   border-radius: 20px;
 }
+
+.custom_input{
+  width:100%;
+  max-width:500px;
+  padding:10px;
+  border-radius:25px;
+}
