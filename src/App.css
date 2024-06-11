@@ -16,3 +16,14 @@
   padding:10px;
   border-radius:25px;
 }
+
+.shimmerLine{
+    height:10px;
+    background-color: #f0eeee;
+}
+
+.shimmerImg{
+  width:100%;
+  height:200px;
+  background-color:#f0eeee;
+}
