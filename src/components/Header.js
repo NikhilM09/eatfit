@@ -1,12 +1,13 @@
 import Logo from "../assets/images/png-clipart-logo-brand-font-food-product-restaurant-logo-design-food-label-thumbnail-removebg-preview.png";
+import {Link} from "react-router-dom"
 
 const Header = () => {
   return (
     <nav className="navbar p-0 navbar-expand-sm bg-light navbar-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="">
           <img src={Logo} style={{ width: "80px" }} />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,24 +22,24 @@ const Header = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="">
                 Home🛖
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/about">
                 About Us😶‍🌫️
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/contact">
                 Contact us📞
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link className="nav-link" to="/cart">
                 Cart🛒
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
