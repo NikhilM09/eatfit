@@ -27,3 +27,14 @@
   height:200px;
   background-color:#f0eeee;
 }
+
+.menu_container{
+  width:100%;
+  max-width:750px;
+  margin:auto;
+}
+
+.info_container{
+  border:1px solid grey;
+  border-radius:25px;
+}

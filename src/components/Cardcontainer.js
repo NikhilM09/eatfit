@@ -67,6 +67,10 @@ const Cardcontainer = () => {
       }
     }
     getRestaurants();
+
+    return ()=>{
+      console.log("component is unmounted")
+    }
   }, [])
 
   console.log("component is rendered")
