@@ -12,7 +12,7 @@ const Body = () => {
         <Navigation />
         <div className="d-flex justify-content-between">
           <Filter />
-          <Searchbar />
+          {/* <Searchbar /> */}
         </div>
         <Cardcontainer />
       </>

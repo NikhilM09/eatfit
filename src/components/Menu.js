@@ -3,34 +3,15 @@ import { useState, useEffect } from "react";
 import Resinfo from "./Resinfo";
 import Shimmer from "./Shimmer";
 import MenuSection from "./MenuSection";
+import useMenu from "../hooks/useMenu";
 
 const Menu = () => {
-  // const params = useParams();
   const { id } = useParams();
-  const [menuData, setMenuData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const menuList = useMenu(id);
+  console.log("custom hook data", menuList);
 
-  useEffect(() => {
-    const getMenu = async () => {
-      try {
-        const data = await fetch(
-          `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.07480&lng=72.88560&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
-        );
-        const json = await data.json();
-        setLoading(false);
-        setMenuData(json?.data?.cards);
-        console.log(
-          "json",
-          json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-        );
-      } catch (err) {
-        console.log("menu api error", err);
-      }
-    };
-    getMenu();
-  }, []);
-
-  if (loading) {
+ 
+  if (menuList.length===0) {
     return (
       <div className="container d-flex flex-wrap gap-4">
         <Shimmer />
@@ -38,7 +19,7 @@ const Menu = () => {
     );
   }
 
-  const menuCategories = menuData[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const menuCategories = menuList[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   const normalMenu = menuCategories.filter((menuCategory) => {
     return (
@@ -65,7 +46,7 @@ const Menu = () => {
     cuisines,
     sla,
     expectationNotifiers,
-  } = menuData[2]?.card?.card?.info;
+  } = menuList[2]?.card?.card?.info;
   const { slaString, lastMileTravelString } = sla;
   const { enrichedText } = expectationNotifiers[0];
 
@@ -107,19 +88,9 @@ const Menu = () => {
                     imageUrl={dish?.card?.info?.imageId}
                   />
                   <hr/>
-                  </>
-                  
+                  </>  
                 );
               })}
-              {/* <MenuSection
-                  isVeg={normalCategory?.card?.card?.itemCards[0]?.card?.info?.isVeg}
-                  name={normalCategory?.card?.card?.itemCards[0]?.card?.info?.name}
-                  costForTwo={normalCategory?.card?.card?.itemCards[0]?.card?.info?.defaultPrice/100}
-                  avgRating={normalCategory?.card?.card?.itemCards[0]?.card?.info?.ratings?.aggregatedRating?.rating}
-                  ratingCount={normalCategory?.card?.card?.itemCards[0]?.card?.info?.ratings?.aggregatedRating?.ratingCount}
-                  description={normalCategory?.card?.card?.itemCards[0]?.card?.info?.description}
-                  imageUrl={normalCategory?.card?.card?.itemCards[0]?.card?.info?.imageId}
-                /> */}
             </>
           );
         })}
