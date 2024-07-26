@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react'
 import Shimmer from "./Shimmer";
 import useRestaurant from "../hooks/useRestaurant"
 import Searchbar from "./Searchbar";
+import useOnline from "../hooks/useOnline"
 
-const Cardcontainer = () => {
+const Cardcontainer = ({author}) => {
+  const isOnline = useOnline();
+
   const [restaurantData, setRestaurantData] = useState([]);
   const [restaurantCollection, setRestaurantCollection] = useState([]);
   const resObject = useRestaurant();
@@ -40,6 +43,10 @@ const Cardcontainer = () => {
 
   console.log("component is rendered")
   
+  if(!isOnline){
+    return <h1>Seems your data pack is expired</h1>
+  }
+
   if(resObject?.loading){
     return (
       <div className="container d-flex flex-wrap gap-4">
@@ -74,6 +81,7 @@ const Cardcontainer = () => {
           <Restaurantcard
           key = {restaurant?.info?.id}
             {...restaurant?.info}
+          designer={author}
           />
         );
       }) : <h1>No restaurants match your search</h1>}</div>

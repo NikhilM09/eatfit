@@ -1,10 +1,12 @@
 import Navigation from "./Carousel";
 import Filter from "./Filter";
+import { useState } from "react";
 import Searchbar from "./Searchbar";
 import Cardcontainer from "./Cardcontainer";
 import { Outlet } from "react-router-dom";
 
 const Body = () => {
+  const [name, setName] = useState("Aniket")
     return (
       <>
       {/* <Outlet/> */}
@@ -14,7 +16,7 @@ const Body = () => {
           <Filter />
           {/* <Searchbar /> */}
         </div>
-        <Cardcontainer />
+        <Cardcontainer author={name}/>
       </>
     );
   };

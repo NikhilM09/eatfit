@@ -2,7 +2,7 @@ import { IMG_URL } from "../const/config"
 
 const MenuSection = ({isVeg, name, costForTwo, avgRating, ratingCount, description, imageUrl}) =>{
     return(
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex p-2 justify-content-between align-items-center">
             <div>
                 <p>{isVeg ? "🟢" : "🔴"}</p>
                 <h6>{name}</h6>

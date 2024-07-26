@@ -97,3 +97,6 @@ three cases :
 1) empty dependency array ([]) : useEffect is called only once after initial render
 2) no dependency array () :  useEffect is called after initial render and after every successive render
 3) dependency array with dependencies ([state1, state2]) :useEffect is called after initial render and after every change in either of dependencies
+
+
+#Lazy loading/chunking/on demand loading/code splitting/dynamic bundling
