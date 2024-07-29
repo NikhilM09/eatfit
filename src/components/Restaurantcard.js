@@ -1,8 +1,11 @@
 import { IMG_URL } from "../const/config";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
-const Restaurantcard = ({cloudinaryImageId, name, avgRating, sla, cuisines, areaName, id, designer}) => {
-  console.log("designer name is", designer);
+
+const Restaurantcard = ({cloudinaryImageId, name, avgRating, sla, cuisines, areaName, id}) => {
+  const {username} = useContext(UserContext);
   return(
       <Link to={`/menu/${id}`} className="custom-card text-decoration-none text-dark">
         <div className="mb-2">
@@ -18,7 +21,7 @@ const Restaurantcard = ({cloudinaryImageId, name, avgRating, sla, cuisines, area
         </div>
         <div className="text-secondary">{cuisines.join(", ")}</div>
         <div>{areaName}</div>
-        <div className="text-danger text-end">Designed by : {designer}</div>
+        <div className="text-danger text-end">Designed by : {username}</div>
         </div>
       </Link>
     )

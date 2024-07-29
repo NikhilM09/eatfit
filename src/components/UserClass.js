@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/UserContext";
 
 class UserClass extends React.Component {
   constructor(props) {
@@ -45,6 +46,9 @@ componentWillUnmount(){
         <button onClick={()=>{
           this.setState({count : this.state.count+1})
         }}>Increase</button>
+        <UserContext.Consumer>
+          {(data)=><h1>Username : {data?.username}</h1>}
+        </UserContext.Consumer>
       </div>
     );
   }

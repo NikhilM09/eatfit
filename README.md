@@ -100,3 +100,11 @@ three cases :
 
 
 #Lazy loading/chunking/on demand loading/code splitting/dynamic bundling
+
+
+#Redux steps
+1) Installing libraries
+2) Create store
+3) Provide store
+4) Create Slice
+5) Configure store

@@ -1,13 +1,14 @@
 import Restaurantcard from "./Restaurantcard";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Shimmer from "./Shimmer";
 import useRestaurant from "../hooks/useRestaurant"
 import Searchbar from "./Searchbar";
 import useOnline from "../hooks/useOnline"
+import UserContext from "../utils/UserContext";
 
 const Cardcontainer = ({author}) => {
   const isOnline = useOnline();
-
+  const {username, setName} = useContext(UserContext);
   const [restaurantData, setRestaurantData] = useState([]);
   const [restaurantCollection, setRestaurantCollection] = useState([]);
   const resObject = useRestaurant();
@@ -67,7 +68,8 @@ const Cardcontainer = ({author}) => {
     <div>
       <div className="container d-flex align-items-center justify-content-between">
       <Searchbar collection={resObject.masterData} updater={resObject?.updater}/>
-      <div >
+      <input type="text" value={username} onChange={(e)=>setName(e.target.value)}/>
+      <div>
         <button className="btn btn-sm btn-light mx-2" onClick={handleDelivery}>Fast Delivery</button>
         <button className="btn btn-sm btn-light mx-2" onClick={handleVeg}>Pure Veg</button>
         <button className="btn btn-sm btn-light mx-2" onClick={handleRating}>Top rated</button>
